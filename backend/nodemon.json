@@ -1,5 +1,6 @@
 {
   "watch": ["src/**/*.ts"],
-  "exec": "ts-node --project tsconfig.json src/index.ts",
+  "exec": "node --loader ts-node/esm -r source-map-support/register src/app.ts",
+  "_comment": "Executes the specified app.ts cause it's the abstract business logic of the app",
   "ext": "ts"
 }

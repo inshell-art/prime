@@ -1,4 +1,4 @@
-// Import dependencies
+// The wrapper for the Express application by Firebase Functions
 import functions from "firebase-functions";
 import express from "express";
 
