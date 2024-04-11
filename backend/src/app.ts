@@ -1,5 +1,5 @@
 import express from "express";
-import { generatePrime } from "./primeGenerator.ts";
+import { generatePrime } from "primeGenerator";
 
 const app = express();
 const port = 3000;
