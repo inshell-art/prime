@@ -7,9 +7,11 @@
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
     "noEmit": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "baseUrl": "."
   },
   "include": ["src/**/*", "tests/**/*"],
   "exclude": ["node_modules"]

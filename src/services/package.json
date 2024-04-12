@@ -28,5 +28,8 @@
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2"
   },
-  "private": true
+  "private": true,
+  "overrides": {
+    "protobufjs": "^7.2.5"
+  }
 }
