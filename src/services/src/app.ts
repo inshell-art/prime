@@ -1,8 +1,11 @@
 import express from "express";
+import cors from "cors";
 import { generatePrime } from "./primeGenerator.ts";
 
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 app.get("/primes/:digits", async (req, res) => {
   const digits = parseInt(req.params.digits);

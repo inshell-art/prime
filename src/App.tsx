@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [inputValue, setInputValue] = useState<string>("");
+  const [response, setResponse] = useState<string>("");
+  const [operationCount, setOperationCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchPrime = async () => {
+      if (operationCount > 0) {
+        // Ensure we don't fetch on initial render
+        try {
+          const res = await fetch(
+            `http://localhost:3000/primes/${operationCount}`
+          );
+          const data = await res.json();
+          setResponse(data.primes || "No prime found"); // Assuming 'prime' is the key in response
+        } catch (error) {
+          setResponse("Failed to fetch data. Error: " + error);
+        }
+      }
+    };
+    fetchPrime();
+  }, [operationCount]);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+    setOperationCount((prevCount) => prevCount + 1);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <textarea value={response} readOnly rows={10} style={{ width: "100%" }} />
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder="Enter your query"
+      />
+    </div>
+  );
+};
 
-export default App
+export default App;
