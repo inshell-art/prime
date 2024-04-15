@@ -3,26 +3,34 @@ import React, { useState, useEffect, useRef } from "react";
 const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [response, setResponse] = useState<string>("");
-  const [operationCount, setOperationCount] = useState<number>(0);
+  const [lastInputLength, setLastInputLength] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const fetchPrime = async () => {
-      if (operationCount > 0) {
-        // Ensure we don't fetch on initial render
+      if (inputValue.length > 0) {
         try {
           const res = await fetch(
-            `http://localhost:3000/primes/${operationCount}`
+            `http://localhost:3000/primes/${inputValue.length}`
           );
           const data = await res.json();
-          setResponse(data.primes || "No prime found"); // Assuming 'prime' is the key in response
+          const newPrime = data.primes || "No prime found";
+          setResponse((prev) => {
+            if (inputValue.length < lastInputLength) {
+              return `${prev}\n${newPrime}`;
+            } else {
+              const lines = prev.split("\n");
+              lines[lines.length - 1] = newPrime;
+              return lines.join("\n");
+            }
+          });
         } catch (error) {
           setResponse("Failed to fetch data. Error: " + error);
         }
       }
     };
     fetchPrime();
-  }, [operationCount]);
+  }, [inputValue.length, inputValue, lastInputLength]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -32,16 +40,16 @@ const App: React.FC = () => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-    setOperationCount((prevCount) => prevCount + 1);
+    setLastInputLength(inputValue.length);
   };
 
   const pickToSave = () => {
     if (inputValue === "" && response === "") {
       if (inputRef.current) {
-        inputRef.current.focus(); // Focus back to input if it's empty
+        inputRef.current.focus();
       }
     } else {
-      const content = `Title: ${inputValue}\nPrime: ${response}`;
+      const content = `Title:\n${inputValue}\n\nPrime:\n${response}`;
       const element = document.createElement("a");
       const file = new Blob([content], { type: "text/plain" });
       element.href = URL.createObjectURL(file);
