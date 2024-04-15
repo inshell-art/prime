@@ -34,7 +34,7 @@ const isPrime = (n: bigint, accuracy: number = 5): boolean => {
 const modPowBigInt = (
   base: bigint,
   exponent: bigint,
-  modulus: bigint
+  modulus: bigint,
 ): bigint => {
   let result: bigint = 1n;
   base %= modulus;
