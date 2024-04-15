@@ -6,7 +6,7 @@ import express from "express";
 const app = express();
 
 // Define a route handler
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send("Hello, Firebase with Express and TypeScript!");
 });
 
