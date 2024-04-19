@@ -11,7 +11,7 @@ const App: React.FC = () => {
       if (inputValue.length > 0) {
         try {
           const res = await fetch(
-            `http://localhost:3000/primes/${inputValue.length}`,
+            `http://localhost:3000/primes/${inputValue.length}`
           );
           const data = await res.json();
           const newPrime = data.primes || "No prime found";
@@ -43,7 +43,7 @@ const App: React.FC = () => {
     setLastInputLength(inputValue.length);
   };
 
-  const pickToSave = () => {
+  const saveDraft = () => {
     if (inputValue === "" && response === "") {
       if (inputRef.current) {
         inputRef.current.focus();
@@ -53,7 +53,7 @@ const App: React.FC = () => {
       const element = document.createElement("a");
       const file = new Blob([content], { type: "text/plain" });
       element.href = URL.createObjectURL(file);
-      element.download = "Your Pick.txt";
+      element.download = "Saved Draft.txt";
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
@@ -70,7 +70,7 @@ const App: React.FC = () => {
         onChange={handleInputChange}
         placeholder=""
       />
-      <button onClick={pickToSave}>Pick</button>
+      <button onClick={saveDraft}>Save</button>
     </div>
   );
 };
