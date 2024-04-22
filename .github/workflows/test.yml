@@ -25,7 +25,7 @@ jobs:
         run: npm install
       - name: Install dependencies for services
         run: npm install
-        working-directory: src/services/
+        working-directory: services/
       - name: Run linter
         run: npm run lint
       - name: Run type-check
