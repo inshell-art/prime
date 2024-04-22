@@ -36,7 +36,7 @@ describe("GET /primes/:digits", () => {
     const response = await request(app).get("/primes/abc");
     expect(response.statusCode).toBe(400);
     expect(response.text).toEqual(
-      "Digits parameter must be a positive integer"
+      "Digits parameter must be a positive integer",
     );
   });
 
@@ -44,7 +44,7 @@ describe("GET /primes/:digits", () => {
     const response = await request(app).get("/primes/-5");
     expect(response.statusCode).toBe(400);
     expect(response.text).toEqual(
-      "Digits parameter must be a positive integer"
+      "Digits parameter must be a positive integer",
     );
   });
 });
