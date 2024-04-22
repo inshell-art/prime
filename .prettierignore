@@ -6,3 +6,11 @@ public
 /frontend/node_modules
 /frontend/dist
 /frontend/public
+
+.DS_Store
+.gitignore
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif

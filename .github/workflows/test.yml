@@ -21,8 +21,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: Install dependencies
+      - name: Install dependencies for repo-wide
         run: npm install
+      - name: Install dependencies for services
+        run: npm run install-services
+        working-directory: src/services/
       - name: Run linter
         run: npm run lint
       - name: Run type-check

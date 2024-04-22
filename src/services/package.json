@@ -3,7 +3,6 @@
   "description": "Cloud Functions for Firebase",
   "type": "module",
   "scripts": {
-    "lint": "eslint .",
     "shell": "firebase functions:shell",
     "start": "nodemon",
     "serve": "firebase emulators:start --only functions",

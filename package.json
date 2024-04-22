@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint --report-unused-disable-directives --max-warnings 0",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css}\"",
+    "lint": "eslint \"src/**/*\" \"src/services/src/**/*\" ",
+    "prettier": "prettier --write \"src/**/*\" \"src/services/src/**/*\"",
     "type-check": "tsc --noEmit",
     "preview": "vite preview",
     "prepare": "husky",
@@ -22,7 +22,7 @@
     "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
-    "@eslint/js": "^9.0.0",
+    "@eslint/js": "^9.1.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.2",
     "@types/jest": "^29.5.12",
@@ -43,7 +43,7 @@
     "prettier": "3.2.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.4",
-    "typescript-eslint": "^7.6.0",
+    "typescript-eslint": "^7.7.0",
     "vite": "^5.2.0"
   }
 }
