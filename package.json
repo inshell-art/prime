@@ -1,17 +1,19 @@
 {
   "name": "prime",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint \"src/**/*\" \"src/services/src/**/*\" ",
-    "prettier": "prettier --write \"src/**/*\" \"src/services/src/**/*\"",
+    "lint": "eslint \"src/**/*\" \"services/src/**/*\" ",
+    "prettier": "prettier --write \"src/**/*\" \"services/src/**/*\"",
     "type-check": "tsc --noEmit",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "jest"
+    "test:fe": "jest",
+    "test:be": "jest --config ./services/jest.config.cjs",
+    "test": "npm run test:fe && npm run test:be"
   },
   "dependencies": {
     "react": "^18.2.0",
