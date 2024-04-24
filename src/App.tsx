@@ -12,7 +12,7 @@ const App: React.FC = () => {
       if (inputValue.length > 0) {
         try {
           const res = await fetch(
-            `http://localhost:3000/primes/${inputValue.length}`
+            `http://localhost:3000/primes/${inputValue.length}`,
           );
           const data = await res.json();
           const newPrime = data.primes || "No prime found";

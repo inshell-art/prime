@@ -13,10 +13,10 @@ describe("App Component", () => {
 
     const textboxes = screen.getAllByRole("textbox");
     textarea = textboxes.find(
-      (element) => element.tagName === "TEXTAREA"
+      (element) => element.tagName === "TEXTAREA",
     ) as HTMLTextAreaElement;
     input = textboxes.find(
-      (element) => element.tagName === "INPUT"
+      (element) => element.tagName === "INPUT",
     ) as HTMLInputElement;
     button = screen.getByRole("button", { name: "Save" });
   });
