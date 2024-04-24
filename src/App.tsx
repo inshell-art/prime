@@ -12,19 +12,11 @@ const App: React.FC = () => {
       if (inputValue.length > 0) {
         try {
           const res = await fetch(
-            `http://localhost:3000/primes/${inputValue.length}`,
+            `http://localhost:3000/primes/${inputValue.length}`
           );
           const data = await res.json();
           const newPrime = data.primes || "No prime found";
-          setResponse((prev) => {
-            if (inputValue.length < lastInputLength) {
-              return `${prev}\n${newPrime}`;
-            } else {
-              const lines = prev.split("\n");
-              lines[lines.length - 1] = newPrime;
-              return lines.join("\n");
-            }
-          });
+          setResponse(newPrime);
         } catch (error) {
           setResponse("Failed to fetch data. Error: " + error);
         }
@@ -33,10 +25,22 @@ const App: React.FC = () => {
     fetchPrime();
   }, [inputValue.length, inputValue, lastInputLength]);
 
+  // Focus the input field on any case
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
+    const handleDocumentClick = () => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    };
+
+    handleDocumentClick();
+
+    document.addEventListener("click", handleDocumentClick);
+
+    // Cleanup the event listener
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
   }, []);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
