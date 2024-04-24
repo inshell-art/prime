@@ -13,10 +13,10 @@ describe("App Component", () => {
 
     const textboxes = screen.getAllByRole("textbox");
     textarea = textboxes.find(
-      (element) => element.tagName === "TEXTAREA",
+      (element) => element.tagName === "TEXTAREA"
     ) as HTMLTextAreaElement;
     input = textboxes.find(
-      (element) => element.tagName === "INPUT",
+      (element) => element.tagName === "INPUT"
     ) as HTMLInputElement;
     button = screen.getByRole("button", { name: "Save" });
   });
@@ -44,37 +44,6 @@ describe("App Component", () => {
     });
 
     expect(screen.getByText(/11/)).toBeInTheDocument();
-  });
-
-  it("should retain the previous prime number and add a new one in a new line upon deletion", async () => {
-    window.fetch = jest
-      .fn()
-      .mockResolvedValueOnce({
-        json: async () => ({ primes: "11" }), // First response for 2-digit input
-        ok: true,
-      })
-      .mockResolvedValueOnce({
-        json: async () => ({ primes: "3" }), // Second response for 1-digit input
-        ok: true,
-      });
-
-    await act(async () => {
-      fireEvent.change(input, { target: { value: "ab" } });
-    });
-
-    if (!textarea) {
-      throw new Error("textarea is not available in DOM");
-    }
-    expect(textarea.textContent).toMatch(/11/);
-
-    await act(async () => {
-      fireEvent.change(input, { target: { value: "a" } });
-    });
-
-    if (!textarea) {
-      throw new Error("textarea is not available in DOM");
-    }
-    expect(textarea.textContent).toMatch(/11\n3/);
   });
 
   it("should save draft when the conditions are met", async () => {

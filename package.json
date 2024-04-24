@@ -10,10 +10,10 @@
     "prettier": "prettier --write \"src/**/*\" \"services/src/**/*\"",
     "type-check": "tsc --noEmit",
     "preview": "vite preview",
-    "prepare": "husky",
     "test:fe": "jest",
     "test:be": "jest --config ./services/jest.config.cjs",
-    "test": "npm run test:fe && npm run test:be"
+    "test": "npm run test:fe && npm run test:be",
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^18.2.0",
