@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import styles from "./App.module.css";
 
 const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -61,16 +62,29 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <textarea value={response} readOnly rows={10} style={{ width: "100%" }} />
-      <input
-        ref={inputRef}
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder=""
-      />
-      <button onClick={saveDraft}>Save</button>
+    <div className={styles.container}>
+      <div className={styles.inputContainer}>
+        <textarea
+          className={styles.textarea}
+          value={response}
+          readOnly
+          rows={10}
+        />
+        <div className={styles.inputRow}>
+          <input
+            className={styles.input}
+            ref={inputRef}
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder=""
+          />
+          <button className={styles.button} onClick={saveDraft}>
+            Save
+          </button>
+        </div>
+        <div className={styles.titlePrime}>Prime</div>
+      </div>
     </div>
   );
 };
