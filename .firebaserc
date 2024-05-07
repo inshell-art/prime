@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "inshell-art"
-  }
+    "dev": "prime-00000"
+  },
+  "targets": {},
+  "etags": {}
 }

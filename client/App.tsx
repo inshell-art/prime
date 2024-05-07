@@ -6,13 +6,16 @@ const App: React.FC = () => {
   const [response, setResponse] = useState<string>("");
   const [lastInputLength, setLastInputLength] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const port = import.meta.env.VITE_PORT;
+
+  console.log(port);
 
   useEffect(() => {
     const fetchPrime = async () => {
       if (inputValue.length > 0) {
         try {
           const res = await fetch(
-            `http://localhost:3000/primes/${inputValue.length}`,
+            `http://localhost:${port}/primes/${inputValue.length}`,
           );
           const data = await res.json();
           const newPrime = data.primes || "No prime found";

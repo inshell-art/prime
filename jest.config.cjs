@@ -8,5 +8,5 @@ module.exports = {
   },
   testEnvironment: "jsdom", // Simulates the browser environment for testing
 
-  testMatch: ["<rootDir>/src/**/?(*.)+(spec|test).[tj]s?(x)"], // Tests in /src for FE only
+  testMatch: ["<rootDir>/client/**/?(*.)+(spec|test).[tj]s?(x)"], // Tests in /src for FE only
 };

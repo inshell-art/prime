@@ -1,4 +1,4 @@
-import { generatePrime } from "./primeGenerator";
+import { generatePrime } from "../../../server/primeGenerator";
 
 describe("generatePrime", () => {
   it("should generate a prime number with the specified number of digits", async () => {
@@ -9,7 +9,7 @@ describe("generatePrime", () => {
 
   it("should throw an error if the digit length is less than 1", async () => {
     await expect(generatePrime(0)).rejects.toThrow(
-      "Digit length must be at least 1",
+      "Digit length must be at least 1"
     );
   });
 });
