@@ -18,7 +18,7 @@
     "s:serve": "firebase emulators:start --only functions",
     "s:deploy": "firebase deploy --only functions",
     "s:logs": "firebase functions:log",
-    "c:test": "jest",
+    "test:unit:client": "jest --selectProjects 'unit:client'",
     "s:test": "jest --config ./server/jest.config.cjs",
     "test": "npm run c:test && npm run s:test",
     "prepare": "husky",

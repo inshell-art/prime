@@ -3,6 +3,10 @@ import App from "../../../client/App";
 import "@testing-library/jest-dom";
 import React from "react";
 
+jest.mock("../../../client/env", () => ({
+  VITE_APP_API_BASE_URL: "http://localhost:3000",
+}));
+
 describe("App Component", () => {
   let textarea: HTMLTextAreaElement;
   let input: HTMLInputElement;
@@ -62,5 +66,10 @@ describe("App Component", () => {
 
     createElementSpy.mockRestore();
     URL.createObjectURL = originalCreateObjectURL;
+  });
+
+  afterEach(() => {
+    // Clean up the mock to avoid leakage between tests
+    delete (global as any).import;
   });
 });
