@@ -17,7 +17,6 @@ export default {
       displayName: "unit:server",
       preset: "ts-jest/presets/default-esm",
       testMatch: ["<rootDir>/tests/unit/server/**/*.test.ts"],
-      // setupFilesAfterEnv: [serverSetup],
     },
   ],
 };
