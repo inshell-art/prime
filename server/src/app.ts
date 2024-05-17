@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { generatePrime } from "./primeGenerator.ts";
-import { port } from "./config.ts";
+import { generatePrime } from "./primeGenerator";
 
 const app = express();
 
@@ -20,10 +19,6 @@ app.get("/primes/:digits", async (req, res) => {
     console.error(error);
     res.status(500).send("Error generating prime number.");
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
 });
 
 export default app;

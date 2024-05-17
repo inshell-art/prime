@@ -1,5 +1,5 @@
 import { act, render, screen, fireEvent } from "@testing-library/react";
-import App from "../../../client/App";
+import App from "../../../client-src/App";
 import "@testing-library/jest-dom";
 import React from "react";
 

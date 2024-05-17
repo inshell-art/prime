@@ -1,0 +1,20 @@
+{
+  "name": "prime-client",
+  "private": true,
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode dev",
+    "build": "vite build",
+    "test": "jest",
+    "serve": "vite preview",
+    "emulate": "firebase emulators:start --only hosting",
+    "deploy": "firebase deploy --only hosting",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

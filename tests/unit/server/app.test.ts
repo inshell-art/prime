@@ -1,7 +1,7 @@
 import request from "supertest";
 import express from "express";
 import cors from "cors";
-import { generatePrime } from "../../../server/primeGenerator"; // Adjust the path as necessary
+import { generatePrime } from "../../../server-src/primeGenerator"; // Adjust the path as necessary
 
 const app = express();
 app.use(cors());

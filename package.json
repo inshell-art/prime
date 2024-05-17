@@ -4,34 +4,23 @@
   "version": "0.0.1",
   "type": "module",
   "engines": {
-    "node": "20"
+    "node": "18"
   },
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "use:dev": "cp firebase.json f.json",
-    "use:test": "cp package.json f.json",
-    "c:dev": "vite --mode dev",
-    "c:build": "tsc && vite build",
-    "c:preview": "vite preview",
-    "c:host": "firebase emulators:start --only hosting",
-    "s:shell": "firebase functions:shell",
-    "s:dev": "nodemon",
-    "s:serve": "firebase emulators:start --only functions",
-    "s:deploy": "firebase deploy --only functions",
-    "s:logs": "firebase functions:log",
-    "test:unit:client": "jest --selectProjects 'unit:client'",
-    "test:unit:server": "jest --selectProjects 'unit:server'",
-    "test:unit": "npm run test:unit:client && npm run test:unit:server",
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "serve": "npm run serve --workspaces",
+    "emulate": "npm run emulate --workspaces",
+    "deploy": "npm run deploy --workspaces",
     "prepare": "husky",
     "lint": "eslint \"client/**/*\" \"server/**/*\" ",
     "prettier": "prettier --write \"client/**/*\" \"server/**/*\" ",
-    "type-check": "tsc --noEmit"
-  },
-  "dependencies": {
-    "express": "^4.19.2",
-    "firebase-admin": "^11.8.0",
-    "firebase-functions": "^4.9.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "type-check": "npm run type-check --workspaces"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
