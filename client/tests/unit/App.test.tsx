@@ -1,9 +1,11 @@
 import { act, render, screen, fireEvent } from "@testing-library/react";
-import App from "../../../client-src/App";
+import App from "../../src/App";
 import "@testing-library/jest-dom";
 import React from "react";
 
-jest.mock("../../../client/env", () => ({
+//TODO: improve branch coverage
+
+jest.mock("../../src/env", () => ({
   VITE_APP_API_BASE_URL: "http://localhost:3000",
 }));
 
@@ -66,6 +68,13 @@ describe("App Component", () => {
 
     createElementSpy.mockRestore();
     URL.createObjectURL = originalCreateObjectURL;
+  });
+
+  // Enhanced: Added test to focus input on document click
+  it("should focus input on document click", () => {
+    fireEvent.click(document);
+
+    expect(input).toHaveFocus();
   });
 
   afterEach(() => {

@@ -1,4 +1,8 @@
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default {
   rootDir: path.resolve(__dirname),
@@ -11,7 +15,6 @@ export default {
     "^.+\\.jsx?$": "babel-jest",
   },
   transformIgnorePatterns: ["<rootDir>/node_modules"],
-  setupFilesAfterEnv: ["<rootDir>/tests/setupTests.js"],
   resetMocks: true,
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy", // Mock CSS imports
