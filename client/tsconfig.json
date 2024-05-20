@@ -3,11 +3,9 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "target": "ESNext",
-    "jsx": "react",
-    "typeRoots": ["./node_modules/@types", "./types"],
-    "types": ["node", "jest"],
-    "rootDir": "client/src",
-    "outDir": "client/dist",
+    "jsx": "react-jsx",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -15,6 +13,5 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["client/src/**/*.ts", "client/src/**/*.tsx"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

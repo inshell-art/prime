@@ -6,23 +6,30 @@ const __dirname = path.dirname(__filename);
 
 export default {
   rootDir: path.resolve(__dirname),
-  roots: ["<rootDir>/tests"],
-  moduleDirectories: ["node_modules", "src"],
-  moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json"],
-  testEnvironment: "jsdom",
-  transform: {
-    "^.+\\.tsx?$": "ts-jest",
-    "^.+\\.jsx?$": "babel-jest",
-  },
-  transformIgnorePatterns: ["<rootDir>/node_modules"],
-  resetMocks: true,
-  moduleNameMapper: {
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy", // Mock CSS imports
-  },
-  testMatch: ["**/?(*.)+(spec|test).[jt]s?(x)"],
 
+  projects: [
+    {
+      displayName: {
+        name: "client:unit",
+        color: "cyan",
+      },
+      testMatch: ["<rootDir>/tests/**/*.test.[jt]s?(x)"],
+      moduleDirectories: ["node_modules", "src"],
+      moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json"],
+      testEnvironment: "jsdom",
+      transform: {
+        "^.+\\.tsx?$": "ts-jest",
+        "^.+\\.jsx?$": "babel-jest",
+      },
+      transformIgnorePatterns: ["<rootDir>/node_modules"],
+      resetMocks: true,
+      moduleNameMapper: {
+        "\\.(css|less|scss|sass)$": "identity-obj-proxy", // Mock CSS imports
+      },
+    },
+  ],
   // Coverage report configuration
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.{ts,tsx,js,jsx}", "!src/**/*.d.ts"],
+  collectCoverageFrom: ["src/App.tsx"], // Coverage for App for unit tests only
   coverageDirectory: "coverage",
 };
