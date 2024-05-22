@@ -1,15 +1,16 @@
 import functions from "firebase-functions";
-import admin from "firebase-admin";
 import app from "./app";
-import { port } from "./config";
+import dotenv from "dotenv";
 
-admin.initializeApp();
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
-// For development environment only
-if (!process.env.FUNCTIONS_EMULATOR) {
+if (process.env.NODE_ENV === "development") {
+  const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
   });
+} else {
+  exports.api = functions.https.onRequest(app); // For emulators, staging and production
 }
-
-export const api = functions.https.onRequest(app);
