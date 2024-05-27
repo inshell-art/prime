@@ -7,7 +7,7 @@
     "node": "18"
   },
   "scripts": {
-    "dev": "NODE_ENV=development nodemon",
+    "dev": "NODE_ENV=dev nodemon",
     "build": "tsc && node prepare-package.js && node append-js-extension.js lib",
     "test": "jest",
     "serve": "npm run build && firebase functions:shell",

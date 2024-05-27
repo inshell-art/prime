@@ -1,19 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./App.module.css";
-import env from "./env";
+
+console.log("Hello from Vite React!");
 
 const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [response, setResponse] = useState<string>("");
   const [lastInputLength, setLastInputLength] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const baseUrl = env.VITE_APP_API_BASE_URL;
+  const api = SERVER_API;
+
+  console.log("api", api);
 
   useEffect(() => {
     const fetchPrime = async () => {
-      if (inputValue.length > 0) {
+      const digits = inputValue.length;
+
+      if (digits === 0) {
+        setResponse("");
+        return;
+      }
+
+      if (digits > 0) {
         try {
-          const res = await fetch(`${baseUrl}/primes/${inputValue.length}`);
+          const res = await fetch(`${api}/primes/${digits}`);
           const data = await res.json();
           const newPrime = data.primes || "No prime found";
           setResponse(newPrime);
