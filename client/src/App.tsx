@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./App.module.css";
-
-console.log("Hello from Vite React!");
+import { server_api } from "./config";
 
 const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [response, setResponse] = useState<string>("");
   const [lastInputLength, setLastInputLength] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const api = SERVER_API;
-
-  console.log("api", api);
+  const api = server_api;
 
   useEffect(() => {
     const fetchPrime = async () => {

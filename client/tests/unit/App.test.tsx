@@ -5,8 +5,8 @@ import React from "react";
 
 //TODO: improve branch coverage
 
-jest.mock("../../src/env", () => ({
-  VITE_APP_API_BASE_URL: "http://localhost:3000",
+jest.mock("../../src/config", () => ({
+  server_api: "http://localhost:3000",
 }));
 
 describe("App Component", () => {
@@ -19,10 +19,10 @@ describe("App Component", () => {
 
     const textboxes = screen.getAllByRole("textbox");
     textarea = textboxes.find(
-      (element) => element.tagName === "TEXTAREA",
+      (element) => element.tagName === "TEXTAREA"
     ) as HTMLTextAreaElement;
     input = textboxes.find(
-      (element) => element.tagName === "INPUT",
+      (element) => element.tagName === "INPUT"
     ) as HTMLInputElement;
     button = screen.getByRole("button", { name: "Save" });
   });

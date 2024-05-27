@@ -13,7 +13,7 @@ export default {
         name: "client:unit",
         color: "cyan",
       },
-      testMatch: ["<rootDir>/tests/**/*.test.[jt]s?(x)"],
+      testMatch: ["<rootDir>/tests/unit/*.test.[jt]s?(x)"],
       moduleDirectories: ["node_modules", "src"],
       moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json"],
       testEnvironment: "jsdom",

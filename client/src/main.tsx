@@ -7,5 +7,5 @@ console.log("Hello from Vite main.tsx!");
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
