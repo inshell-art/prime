@@ -19,10 +19,10 @@ export default {
     "^.+\\.[t|j]sx?$": "ts-jest",
   },
 
-  testMatch: ["<rootDir>/tests/unit/**/*.test.(ts|tsx)"],
+  testMatch: ["<rootDir>/tests/**/*.test.(ts|tsx)"],
   testPathIgnorePatterns: ["/node_modules/", "/dist/"],
 
   collectCoverage: true,
-  collectCoverageFrom: ["<rootDir>/src/primeGenerator.ts"], // Coverage for primeGenerator.ts for unit tests only
+  collectCoverageFrom: ["<rootDir>/src/**/*.ts"],
   coverageDirectory: path.join(__dirname, "coverage"),
 };
