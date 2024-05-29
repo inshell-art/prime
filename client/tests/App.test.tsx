@@ -1,11 +1,11 @@
 import { act, render, screen, fireEvent } from "@testing-library/react";
-import App from "../../src/App";
+import App from "../src/App";
 import "@testing-library/jest-dom";
 import React from "react";
 
 //TODO: improve branch coverage
 
-jest.mock("../../src/config", () => ({
+jest.mock("../src/config", () => ({
   server_api: "http://localhost:3000",
 }));
 
@@ -19,10 +19,10 @@ describe("App Component", () => {
 
     const textboxes = screen.getAllByRole("textbox");
     textarea = textboxes.find(
-      (element) => element.tagName === "TEXTAREA",
+      (element) => element.tagName === "TEXTAREA"
     ) as HTMLTextAreaElement;
     input = textboxes.find(
-      (element) => element.tagName === "INPUT",
+      (element) => element.tagName === "INPUT"
     ) as HTMLInputElement;
     button = screen.getByRole("button", { name: "Save" });
   });
