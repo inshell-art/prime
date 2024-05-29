@@ -8,15 +8,17 @@
   },
   "scripts": {
     "dev": "NODE_ENV=dev nodemon",
-    "build": "tsc && node prepare-package.js && node append-js-extension.js lib",
+    "clean-lib": "rimraf lib",
+    "build": "npm run clean-lib && tsc && node prepare-package-json.js && node append-js-extension.js lib",
     "test": "jest",
-    "serve": "npm run build && firebase functions:shell",
+    "serve": "firebase functions:shell",
     "emulate": "firebase emulators:start --only functions",
     "deploy": "firebase deploy --only functions",
     "type-check": "tsc --noEmit",
     "logs": "firebase functions:log"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "firebase-admin": "^11.8.0",
     "firebase-functions": "^5.0.1"

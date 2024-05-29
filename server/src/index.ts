@@ -1,12 +1,10 @@
-import functions from "firebase-functions";
 import app from "./app";
 import dotenv from "dotenv";
+import { onRequest } from "firebase-functions/v2/https";
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-
-console.log("Hello from index.ts!", process.env.NODE_ENV);
 
 // For local development
 if (process.env.NODE_ENV === "dev") {
@@ -16,4 +14,4 @@ if (process.env.NODE_ENV === "dev") {
   });
 }
 // For emulators, staging, and production
-export const api = functions.https.onRequest(app);
+export const api = onRequest(app);

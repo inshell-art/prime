@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
       SERVER_API: JSON.stringify(env.VITE_SERVER_API),
     },
     build: {
+      // todo: run build for vite and server app
       outDir: "dist",
       sourcemap: mode === "dev", // Generate sourcemaps in development mode only
       rollupOptions: {
@@ -23,6 +24,7 @@ export default defineConfig(({ mode }) => {
           main: resolve(__dirname, "index.html"),
         },
       },
+      emptyOutDir: true,
     },
     resolve: {
       alias: {

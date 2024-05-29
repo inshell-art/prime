@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --mode dev",
-    "build": "vite build",
+    "build": "vite build --mode emulate",
     "test": "jest",
     "serve": "vite preview",
     "emulate": "firebase emulators:start --only hosting",
