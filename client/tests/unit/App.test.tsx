@@ -1,7 +1,13 @@
 import { act, render, screen, fireEvent } from "@testing-library/react";
-import App from "./App";
+import App from "../../src/App";
 import "@testing-library/jest-dom";
 import React from "react";
+
+//TODO: improve branch coverage
+
+jest.mock("../../src/config", () => ({
+  server_api: "http://localhost:3000",
+}));
 
 describe("App Component", () => {
   let textarea: HTMLTextAreaElement;
@@ -62,5 +68,17 @@ describe("App Component", () => {
 
     createElementSpy.mockRestore();
     URL.createObjectURL = originalCreateObjectURL;
+  });
+
+  // Enhanced: Added test to focus input on document click
+  it("should focus input on document click", () => {
+    fireEvent.click(document);
+
+    expect(input).toHaveFocus();
+  });
+
+  afterEach(() => {
+    // Clean up the mock to avoid leakage between tests
+    delete (global as any).import;
   });
 });

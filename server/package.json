@@ -1,0 +1,26 @@
+{
+  "name": "prime-server",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=dev nodemon",
+    "clean-lib": "rimraf lib",
+    "build": "npm run clean-lib && tsc && node prepare-package-json.js && node append-js-extension.js lib",
+    "test": "jest",
+    "serve": "firebase functions:shell",
+    "emulate": "firebase emulators:start --only functions",
+    "deploy": "firebase deploy --only functions",
+    "type-check": "tsc --noEmit",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^5.0.1"
+  }
+}

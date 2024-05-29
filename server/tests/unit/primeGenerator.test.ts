@@ -1,4 +1,4 @@
-import { generatePrime } from "./primeGenerator";
+import { generatePrime } from "../../src/primeGenerator";
 
 describe("generatePrime", () => {
   it("should generate a prime number with the specified number of digits", async () => {

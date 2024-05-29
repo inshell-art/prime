@@ -1,6 +1,0 @@
-{
-  "watch": ["src/**/*.ts"],
-  "exec": "node --loader ts-node/esm src/app.ts",
-  "_comment": "Executes the specified app.ts for dev env, cause it's the abstract business logic of the app",
-  "ext": "ts"
-}

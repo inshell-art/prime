@@ -1,19 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./App.module.css";
+import { server_api } from "./config";
 
 const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [response, setResponse] = useState<string>("");
   const [lastInputLength, setLastInputLength] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const api = server_api;
 
   useEffect(() => {
     const fetchPrime = async () => {
-      if (inputValue.length > 0) {
+      const digits = inputValue.length;
+
+      if (digits === 0) {
+        setResponse("");
+        return;
+      }
+
+      if (digits > 0) {
         try {
-          const res = await fetch(
-            `http://localhost:3000/primes/${inputValue.length}`,
-          );
+          const res = await fetch(`${api}/primes/${digits}`);
           const data = await res.json();
           const newPrime = data.primes || "No prime found";
           setResponse(newPrime);
