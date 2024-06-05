@@ -23,6 +23,7 @@ const App: React.FC = () => {
           const res = await fetch(`${api}/primes/${digits}`);
           if (!res.ok) {
             setResponse(`Failed to fetch data. Error: ${res.statusText}`);
+            return;
           }
           const data = await res.json();
           const newPrime = data.primes || "No prime found";
