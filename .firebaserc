@@ -1,7 +1,9 @@
 {
   "projects": {
-    "dev": "prime-00000"
+    "dev": "prime-00000",
+    "staging": "pirme-staging"
   },
   "targets": {},
-  "etags": {}
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

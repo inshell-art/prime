@@ -21,11 +21,16 @@ const App: React.FC = () => {
       if (digits > 0) {
         try {
           const res = await fetch(`${api}/primes/${digits}`);
+          if (!res.ok) {
+            setResponse(`Failed to fetch data. Error: ${res.statusText}`);
+          }
           const data = await res.json();
           const newPrime = data.primes || "No prime found";
           setResponse(newPrime);
         } catch (error) {
-          setResponse("Failed to fetch data. Error: " + error);
+          if (error instanceof Error) {
+            setResponse(`Failed to fetch data. Error: ${error.message}`);
+          }
         }
       }
     };
