@@ -1,7 +1,7 @@
 import { randomBytes } from "crypto";
 
 // Miller-Rabin primality test adapted for BigInt
-const isPrime = (n: bigint, accuracy: number = 5): boolean => {
+export const isPrime = (n: bigint, accuracy: number = 5): boolean => {
   if (n === 2n || n === 3n) return true;
   if (n < 2n || n % 2n === 0n) return false;
 
@@ -34,7 +34,7 @@ const isPrime = (n: bigint, accuracy: number = 5): boolean => {
 const modPowBigInt = (
   base: bigint,
   exponent: bigint,
-  modulus: bigint,
+  modulus: bigint
 ): bigint => {
   let result: bigint = 1n;
   base %= modulus;
