@@ -1,4 +1,5 @@
-import { generatePrime } from "../src/primeGenerator";
+import { generatePrime, isPrime } from "../src/primeGenerator";
+import * as fc from "fast-check";
 
 describe("generatePrime", () => {
   it("should generate a prime number with the specified number of digits", async () => {
@@ -10,6 +11,27 @@ describe("generatePrime", () => {
   it("should throw an error if the digit length is less than 1", async () => {
     await expect(generatePrime(0)).rejects.toThrow(
       "Digit length must be at least 1",
+    );
+  });
+
+  it("should correctly identify prime numbers", () => {
+    fc.assert(
+      fc.property(fc.bigUintN(32), (num) => {
+        if (num < 2n) {
+          expect(isPrime(num)).toBe(false);
+        } else {
+          const primeCheck = isPrime(num);
+          const isActuallyPrime = (n: bigint) => {
+            if (n <= 1n) return false;
+            for (let i = 2n; i * i <= n; i++) {
+              if (n % i === 0n) return false;
+            }
+            return true;
+          };
+          expect(primeCheck).toBe(isActuallyPrime(num));
+        }
+      }),
+      { endOnFailure: true },
     );
   });
 });
