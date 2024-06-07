@@ -34,4 +34,25 @@ describe("generatePrime", () => {
       { endOnFailure: true }
     );
   });
+
+  it("should correctly identify prime numbers", () => {
+    fc.assert(
+      fc.property(fc.bigUintN(32), (num) => {
+        if (num < 2n) {
+          expect(isPrime(num)).toBe(false);
+        } else {
+          const primeCheck = isPrime(num);
+          const isActuallyPrime = (n: bigint) => {
+            if (n <= 1n) return false;
+            for (let i = 2n; i * i <= n; i++) {
+              if (n % i === 0n) return false;
+            }
+            return true;
+          };
+          expect(primeCheck).toBe(isActuallyPrime(num));
+        }
+      }),
+      { endOnFailure: true },
+    );
+  });
 });
