@@ -10,7 +10,7 @@ describe("generatePrime", () => {
 
   it("should throw an error if the digit length is less than 1", async () => {
     await expect(generatePrime(0)).rejects.toThrow(
-      "Digit length must be at least 1"
+      "Digit length must be at least 1",
     );
   });
 
@@ -31,7 +31,7 @@ describe("generatePrime", () => {
           expect(primeCheck).toBe(isActuallyPrime(num));
         }
       }),
-      { endOnFailure: true }
+      { endOnFailure: true },
     );
   });
 
@@ -58,7 +58,7 @@ describe("generatePrime", () => {
           expect(primeCheck).toBe(isActuallyPrime(num));
         }
       }),
-      { endOnFailure: true }
+      { endOnFailure: true },
     );
   });
 });
