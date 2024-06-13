@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "dev": "NODE_ENV=dev  vite",
-    "build:emulate": "NODE_ENV=emulate vite build",
     "test": "jest",
+    "emu": "npm run build:emu && firebase emulators:start --only hosting",
+    "build:emu": "NODE_ENV=emu vite build",
     "serve": "vite preview",
-    "emulate": "npm run build:emulate && firebase emulators:start --only hosting",
     "deploy": "firebase deploy --only hosting",
     "type-check": "tsc --noEmit"
   },

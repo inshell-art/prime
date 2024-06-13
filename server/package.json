@@ -8,11 +8,11 @@
   },
   "scripts": {
     "dev": "NODE_ENV=dev nodemon",
-    "clean-lib": "rimraf lib",
-    "build:emulate": "npm run clean-lib && tsc --project tsconfig.build.json && node prepare-package-json.js && node append-js-extension.js lib",
     "test": "jest",
+    "clean-lib": "rimraf lib",
+    "build:emu": "npm run clean-lib && tsc --project tsconfig.build.json && node prepare-package-json.js && node append-js-extension.js lib",
+    "emu": "npm run build:emu && firebase emulators:start --only functions",
     "serve": "firebase functions:shell",
-    "emulate": "npm run build:emulate && firebase emulators:start --only functions",
     "deploy": "firebase deploy --only functions",
     "type-check": "tsc --noEmit",
     "logs": "firebase functions:log"

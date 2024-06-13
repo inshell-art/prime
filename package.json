@@ -13,9 +13,13 @@
   "scripts": {
     "dev": "npm run dev --workspaces",
     "test": "npm run test --workspaces",
-    "emulate": "npm run emulate --workspaces",
+    "emu": "npm run emu --workspaces",
+    "emu:client": "npm run emu -w client",
+    "emu:server": "npm run emu -w server",
+    "emu:all": "concurrently  \"npm run emu -w server\" \"npm run emu -w client\"",
+    "e2e:emu": "wait-on http://127.0.0.1:5009 && cypress run --config-file cypress/emulate.config.ts",
+    "test:e2e": "concurrently --kill-others-on-fail \"npm run emu:all\" \"npm run e2e:emu\"",
     "deploy": "npm run deploy --workspaces",
-    "e2e:emulate": "cypress run --config-file cypress/emulate.config.ts",
     "prepare": "husky",
     "lint": "eslint \"client/**/*\" \"server/**/*\" ",
     "prettier": "prettier --write \"client/**/*\" \"server/**/*\" ",
@@ -43,6 +47,7 @@
     "@typescript-eslint/parser": "^7.5.0",
     "@vitejs/plugin-react": "^4.2.1",
     "babel-jest": "^29.7.0",
+    "concurrently": "^8.2.2",
     "cypress": "^13.11.0",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
@@ -66,9 +71,10 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.7.0",
-    "vite": "^5.2.0"
+    "vite": "^5.2.0",
+    "wait-on": "^7.2.0"
   },
   "overrides": {
-    "protobufjs": "^7.2.5"
+    "protobufjs": "^7.3.0"
   }
 }
