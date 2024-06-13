@@ -12,11 +12,10 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspaces",
-    "build": "npm run build --workspaces",
     "test": "npm run test --workspaces",
-    "serve": "npm run serve --workspaces",
     "emulate": "npm run emulate --workspaces",
     "deploy": "npm run deploy --workspaces",
+    "e2e:emulate": "cypress run --config-file cypress/emulate.config.ts",
     "prepare": "husky",
     "lint": "eslint \"client/**/*\" \"server/**/*\" ",
     "prettier": "prettier --write \"client/**/*\" \"server/**/*\" ",

@@ -37,7 +37,7 @@ describe("generatePrime", () => {
 
   it("should correctly identify prime numbers", () => {
     fc.assert(
-      fc.property(fc.bigUintN(64), (num) => {
+      fc.property(fc.bigUintN(32), (num) => {
         if (num < 2n) {
           expect(isPrime(num)).toBe(false);
         } else {

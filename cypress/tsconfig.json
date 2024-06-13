@@ -1,7 +1,16 @@
 {
-  "extends": "../tsconfig.json",
-  "include": ["../node_modules/cypress", "./**/*.ts", "./**/*.tsx"],
   "compilerOptions": {
-    "types": ["cypress", "node"]
-  }
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "allowJs": true,
+    "checkJs": false,
+    "isolatedModules": false,
+    "noEmit": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["cypress"]
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
 }
