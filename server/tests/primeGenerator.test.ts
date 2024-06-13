@@ -10,7 +10,7 @@ describe("generatePrime", () => {
 
   it("should throw an error if the digit length is less than 1", async () => {
     await expect(generatePrime(0)).rejects.toThrow(
-      "Digit length must be at least 1"
+      "Digit length must be at least 1",
     );
   });
 
@@ -31,7 +31,7 @@ describe("generatePrime", () => {
           expect(primeCheck).toBe(isActuallyPrime(num));
         }
       }),
-      { endOnFailure: true }
+      { endOnFailure: true },
     );
   });
 
@@ -44,9 +44,15 @@ describe("generatePrime", () => {
           const primeCheck = isPrime(num);
           const isActuallyPrime = (n: bigint) => {
             if (n <= 1n) return false;
-            for (let i = 2n; i * i <= n; i++) {
+            if (n === 2n || n === 3n) return true;
+            if (n % 2n === 0n) return false;
+            if (n % 3n === 0n) return false;
+
+            for (let i = 5n; i * i <= n; i += 6n) {
               if (n % i === 0n) return false;
+              if (n % (i + 2n) === 0n) return false;
             }
+
             return true;
           };
           expect(primeCheck).toBe(isActuallyPrime(num));

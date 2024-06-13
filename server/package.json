@@ -9,10 +9,10 @@
   "scripts": {
     "dev": "NODE_ENV=dev nodemon",
     "clean-lib": "rimraf lib",
-    "build": "npm run clean-lib && tsc && node prepare-package-json.js && node append-js-extension.js lib",
+    "build:emulate": "npm run clean-lib && tsc --project tsconfig.build.json && node prepare-package-json.js && node append-js-extension.js lib",
     "test": "jest",
     "serve": "firebase functions:shell",
-    "emulate": "firebase emulators:start --only functions",
+    "emulate": "npm run build:emulate && firebase emulators:start --only functions",
     "deploy": "firebase deploy --only functions",
     "type-check": "tsc --noEmit",
     "logs": "firebase functions:log"
