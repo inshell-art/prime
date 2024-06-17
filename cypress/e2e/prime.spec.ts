@@ -1,4 +1,10 @@
 describe("Prime e2e Tests", () => {
+  before(() => {
+    cy.request(`${Cypress.env("apiUrl")}/primes/2`)
+      .its("status")
+      .should("eq", 200);
+  });
+
   beforeEach(() => {
     cy.visit("/");
   });

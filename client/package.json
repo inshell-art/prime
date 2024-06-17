@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "NODE_ENV=dev  vite",
     "test": "jest",
-    "emu": "npm run build:emu && firebase emulators:start --only hosting",
     "build:emu": "NODE_ENV=emu vite build",
+    "emu": "npm run build:emu && firebase emulators:start --only hosting",
     "serve": "vite preview",
     "deploy": "firebase deploy --only hosting",
     "type-check": "tsc --noEmit"

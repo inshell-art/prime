@@ -15,3 +15,13 @@ if (process.env.NODE_ENV === "dev") {
 }
 // For emulators, staging, and production
 export const api = onRequest(app);
+
+process.on("SIGTERM", () => {
+  console.info("SIGTERM signal received.");
+  console.log("Closing http server in 3 seconds...");
+
+  setTimeout(() => {
+    console.log("Http server closed.");
+    process.exit(0);
+  }, 3000);
+});
