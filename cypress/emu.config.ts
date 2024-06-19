@@ -7,8 +7,10 @@ import fs from "fs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = resolve(__filename);
 
-dotenv.config({ path: resolve(__dirname, "../client/.env.emu") });
+// Load the environment variables from the .env.emu file
+dotenv.config({ path: resolve(__dirname, "../../client/.env.emu") });
 
+// Get the port from firebase.json
 const firebaseConfig = JSON.parse(
   fs.readFileSync(resolve(__dirname, "../../firebase.json"), "utf-8")
 );

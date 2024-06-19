@@ -18,7 +18,7 @@
     "wait:emu:server": "wait-on http://127.0.0.1:5001/prime-00000/us-central1/api/primes/2 && echo \"Server is ready!\"",
     "start:emu:client": "npm run emu -w client",
     "wait:emu:client": "wait-on http://127.0.0.1:5009 && echo \"Client is ready!\"",
-    "cy:emu": "cypress run --config-file cypress/emulate.config.ts",
+    "cy:emu": "cypress run --config-file cypress/emu.config.ts",
     "test:e2e:emu": "concurrently -k \"npm run start:emu:server\" \"npm run wait:emu:server && npm run start:emu:client\" \"npm run wait:emu:client && npm run cy:emu\"",
     "deploy": "npm run deploy --workspaces",
     "prepare": "husky",

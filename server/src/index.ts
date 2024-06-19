@@ -17,4 +17,17 @@ if (process.env.NODE_ENV === "dev") {
 }
 
 // For emulators, staging, and production
-export const api = onRequest(app);
+export const api = onRequest((req, res) => {
+  console.log("Received request:", req.method, req.url);
+  console.log("Request headers:", JSON.stringify(req.headers));
+  if (req.method === "POST" || req.method === "PUT") {
+    console.log("Request body:", JSON.stringify(req.body));
+  }
+
+  try {
+    app(req, res);
+  } catch (error) {
+    console.error("Error handling request:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
