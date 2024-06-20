@@ -13,6 +13,7 @@ export default {
         name: "client:unit",
         color: "cyan",
       },
+      setupFiles: ["<rootDir>/tests/jest.setup.js"],
       testMatch: ["<rootDir>/tests/*.test.[jt]s?(x)"],
       moduleDirectories: ["node_modules", "src"],
       moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json"],

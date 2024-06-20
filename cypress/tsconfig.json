@@ -13,5 +13,5 @@
     "skipLibCheck": true,
     "types": ["cypress"]
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "cy.config.js"]
 }

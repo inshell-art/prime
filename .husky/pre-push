@@ -1,1 +1,4 @@
 npm test
+npm run emu &
+npm run wait:emu
+npm run e2e:emu
