@@ -2,13 +2,6 @@ import { act, render, screen, fireEvent } from "@testing-library/react";
 import App from "../src/App";
 import "@testing-library/jest-dom";
 import React from "react";
-import { json } from "stream/consumers";
-
-const originalError = console.error;
-
-jest.mock("../src/config", () => ({
-  server_api: "http://localhost:3000",
-}));
 
 describe("App Component", () => {
   let textarea: HTMLTextAreaElement;

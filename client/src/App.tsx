@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./App.module.css";
-import { server_api } from "./config";
 
 const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [response, setResponse] = useState<string>("");
   const [lastInputLength, setLastInputLength] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const api = server_api;
+  const api = SERVER_API;
 
   useEffect(() => {
     const fetchPrime = async () => {

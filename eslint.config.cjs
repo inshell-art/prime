@@ -1,3 +1,5 @@
+require("eslint-plugin-react");
+
 const globals = require("globals");
 const pluginJs = require("@eslint/js");
 const tseslint = require("typescript-eslint");
