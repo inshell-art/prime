@@ -1,6 +1,6 @@
 {
   "functions": {
-    "source": "server/lib",
+    "source": "server/dist",
     "codebase": "default",
     "runtime": "nodejs18",
     "ignore": [

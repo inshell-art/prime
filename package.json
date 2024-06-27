@@ -11,10 +11,8 @@
     "server"
   ],
   "scripts": {
-    "dev": "npm run dev --workspaces",
     "test": "npm run test --workspaces",
-    "build:emu": "npm run build:emu --workspaces",
-    "emu": "npm run build:emu && firebase emulators:start --only functions,hosting",
+    "emu": "npm run build -w server && npm run build:emu -w client  -- && firebase emulators:start --only functions,hosting",
     "wait:emu": "NODE_ENV=emu npx tsx scripts/waitEmu.ts",
     "e2e:emu": "NODE_ENV=emu cypress run --config-file cypress/cy.config.ts",
     "deploy": "npm run deploy --workspaces",

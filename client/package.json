@@ -5,12 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "NODE_ENV=dev  vite",
+    "dev": "vite --mode dev",
     "test": "jest",
-    "build:emu": "NODE_ENV=emu vite build",
+    "build:emu": "vite build --mode emu",
+    "build:staging": " vite build --mode staging",
+    "build:prod": "vite build --mode prod",
     "emu": "npm run build:emu && firebase emulators:start --only hosting",
-    "serve": "vite preview",
-    "deploy": "firebase deploy --only hosting",
+    "deploy:staging": "npm run build:staging && firebase use staging && firebase deploy --only hosting",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

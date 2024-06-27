@@ -1,4 +1,4 @@
-declare const SERVER_API: string;
+declare const SERVER_API_GET_PRIME: string;
 
 declare module "*.css" {
   const content: { [className: string]: string };

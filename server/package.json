@@ -9,11 +9,11 @@
   "scripts": {
     "dev": "NODE_ENV=dev nodemon",
     "test": "jest",
-    "clean-lib": "rimraf lib",
-    "build:emu": "npm run clean-lib && tsc --project tsconfig.build.json && node prepare-package-json.js && node append-js-extension.js lib",
-    "emu": "npm run build:emu && firebase emulators:start --only functions",
-    "serve": "firebase functions:shell",
-    "deploy": "firebase deploy --only functions",
+    "clean-dist": "rimraf dist",
+    "build": "npm run clean-dist && tsc --project tsconfig.build.json && node prepare-package-json.js && node append-js-extension.js dist",
+    "emu": "npm run build && firebase emulators:start --only functions",
+    "deploy:staging": "npm run build && firebase use staging && firebase deploy --only functions",
+    "deploy:prod": "npm run build && firebase use prod && firebase deploy --only functions",
     "type-check": "tsc --noEmit",
     "logs": "firebase functions:log"
   },
