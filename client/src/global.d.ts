@@ -1,16 +1,16 @@
-declare const SERVER_API: string;
+declare const __VITE_GET_PRIME: string;
 
-declare module "*.css" {
+declare module '*.css' {
   const content: { [className: string]: string };
   export default content;
 }
 
-declare module "*.scss" {
+declare module '*.scss' {
   const content: { [className: string]: string };
   export default content;
 }
 
-declare module "*.sass" {
+declare module '*.sass' {
   const content: { [className: string]: string };
   export default content;
 }
