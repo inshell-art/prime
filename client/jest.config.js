@@ -19,8 +19,7 @@ export default {
       moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json"],
       testEnvironment: "jsdom",
       transform: {
-        "^.+\\.tsx?$": "ts-jest",
-        "^.+\\.jsx?$": "babel-jest",
+        "^.+\\.[tj]sx?$": "ts-jest",
       },
       transformIgnorePatterns: ["<rootDir>/node_modules"],
       resetMocks: true,

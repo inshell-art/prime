@@ -17,6 +17,9 @@ export default defineConfig(({ mode }) => {
       },
       emptyOutDir: true,
     },
+    define: {
+      __VITE_GET_PRIME: JSON.stringify(process.env.VITE_GET_PRIME),
+    },
     resolve: {
       alias: {
         "@": resolve(__dirname, "src"),

@@ -1,1 +1,1 @@
-global.SERVER_API = "http://localhost:3000";
+global.__VITE_GET_PRIME = "http://localhost:3000/";

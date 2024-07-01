@@ -16,7 +16,8 @@ export default {
   testEnvironment: "node",
   preset: "ts-jest/presets/default-esm",
   transform: {
-    "^.+\\.[t|j]sx?$": "ts-jest",
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.jsx?$": "babel-jest",
   },
 
   testMatch: ["<rootDir>/tests/**/*.test.(ts|tsx)"],
