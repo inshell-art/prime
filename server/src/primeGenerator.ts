@@ -1,4 +1,4 @@
-import { randomBytes } from "crypto";
+import { randomBytes } from 'crypto';
 
 // Miller-Rabin primality test adapted for BigInt
 export const isPrime = (n: bigint, accuracy: number = 5): boolean => {
@@ -51,20 +51,20 @@ const modPowBigInt = (
 };
 
 export const generatePrime = async (digits: number): Promise<bigint> => {
-  if (digits < 1) throw new Error("Digit length must be at least 1");
+  if (digits < 1) throw new Error('Digit length must be at least 1');
 
   const min: bigint = 10n ** (BigInt(digits) - 1n);
   const max: bigint = 10n ** BigInt(digits) - 1n;
 
   let candidate: bigint =
     min +
-    (BigInt("0x" + randomBytes(Number(digits)).toString("hex")) % (max - min));
+    (BigInt('0x' + randomBytes(Number(digits)).toString('hex')) % (max - min));
 
   while (!isPrime(candidate)) {
     // Apply the "0x" prefix here as well
     candidate =
       min +
-      (BigInt("0x" + randomBytes(Number(digits)).toString("hex")) %
+      (BigInt('0x' + randomBytes(Number(digits)).toString('hex')) %
         (max - min));
   }
 

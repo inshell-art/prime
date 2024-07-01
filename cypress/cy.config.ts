@@ -1,8 +1,10 @@
 import { defineConfig } from "cypress";
 import { hostingPort } from "../scripts/getHostingPort";
-import "../scripts/loadEnv"; // Load environment variables for SERVER_API
+import "../scripts/loadEnv"; // Load environment variables for VITE_GET_PRIME
 
-const server_api = process.env.SERVER_API;
+const server_api = process.env.GET_PRIME_URL;
+
+console.log("server_api:", server_api);
 const port = hostingPort;
 
 export default defineConfig({

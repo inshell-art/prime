@@ -1,15 +1,15 @@
-import express from "express";
-import cors from "cors";
-import { generatePrime } from "./primeGenerator";
+import express from 'express';
+import cors from 'cors';
+import { generatePrime } from './primeGenerator';
 
 const app = express();
 
 app.use(cors());
 
-app.get("/primes/:digits", async (req, res) => {
+app.get('/primes/:digits', async (req, res) => {
   const digits = parseInt(req.params.digits);
   if (isNaN(digits) || digits <= 0) {
-    return res.status(400).send("Digits parameter must be a positive integer");
+    return res.status(400).send('Digits parameter must be a positive integer');
   }
 
   try {
@@ -17,7 +17,7 @@ app.get("/primes/:digits", async (req, res) => {
     res.json({ digits, primes: prime.toString() });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error generating prime number.");
+    res.status(500).send('Error generating prime number.');
   }
 });
 

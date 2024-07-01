@@ -1,22 +1,22 @@
-import { generatePrime, isPrime } from "../src/primeGenerator";
-import * as fc from "fast-check";
+import { generatePrime, isPrime } from '../src/primeGenerator';
+import * as fc from 'fast-check';
 
-describe("generatePrime", () => {
-  it("should generate a prime number with the specified number of digits", async () => {
+describe('generatePrime', () => {
+  it('should generate a prime number with the specified number of digits', async () => {
     const prime = await generatePrime(4);
     expect(prime.toString().length).toBe(4);
     expect(prime % 2n).toBe(1n);
   });
 
-  it("should throw an error if the digit length is less than 1", async () => {
+  it('should throw an error if the digit length is less than 1', async () => {
     await expect(generatePrime(0)).rejects.toThrow(
-      "Digit length must be at least 1",
+      'Digit length must be at least 1',
     );
   });
 
-  it("should correctly identify prime numbers", () => {
+  it('should correctly identify prime numbers', () => {
     fc.assert(
-      fc.property(fc.bigUintN(32), (num) => {
+      fc.property(fc.bigUintN(32), num => {
         if (num < 2n) {
           expect(isPrime(num)).toBe(false);
         } else {
@@ -35,9 +35,9 @@ describe("generatePrime", () => {
     );
   });
 
-  it("should correctly identify prime numbers", () => {
+  it('should correctly identify prime numbers', () => {
     fc.assert(
-      fc.property(fc.bigUintN(32), (num) => {
+      fc.property(fc.bigUintN(32), num => {
         if (num < 2n) {
           expect(isPrime(num)).toBe(false);
         } else {

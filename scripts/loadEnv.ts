@@ -9,7 +9,3 @@ const env = process.env.NODE_ENV || "dev";
 const envFile = path.resolve(__dirname, `../config/.env.${env}`);
 
 dotenv.config({ path: envFile });
-
-console.log(`Loaded env: ${env}`);
-console.log("SERVER_API_GET_PRIME:", process.env.SERVER_API_GET_PRIME);
-console.log("PORT:", process.env.PORT);
