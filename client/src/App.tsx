@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './App.module.css';
 const api = __VITE_GET_PRIME;
+console.log('api:', api);
 
 const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');

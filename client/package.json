@@ -12,6 +12,7 @@
     "build:prod": "NODE_ENV=prod vite build",
     "emu": "npm run build:emu && firebase emulators:start --only hosting",
     "deploy:staging": "npm run build:staging && firebase use staging && firebase deploy --only hosting --token $FIREBASE_TOKEN",
+    "deploy:staging:local": "npm run build:staging && firebase use staging && firebase deploy --only hosting",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
