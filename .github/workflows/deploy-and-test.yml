@@ -34,6 +34,9 @@ jobs:
         run: npm install -g firebase-tools
 
       - name: Deploy to Firebase for client
+        env:
+          NODE_ENV: staging
+          GET_PRIME_URL: ${{ secrets.GET_PRIME_URL_STAGING }}
         run: npm run deploy:staging -w client
 
       - name: Deploy to Firebase for server
