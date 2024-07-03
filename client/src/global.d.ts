@@ -1,4 +1,5 @@
 declare const __VITE_GET_PRIME: string;
+declare const __API_KEY: string;
 
 declare module '*.css' {
   const content: { [className: string]: string };

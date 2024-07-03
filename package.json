@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "test": "npm run test --workspaces",
-    "emu": "npm run build -w server && npm run build:emu -w client  -- && firebase emulators:start --only functions,hosting",
+    "emu": "npm run build:emu -w server && npm run build:emu -w client  -- && firebase emulators:start --only functions,hosting",
     "wait:emu": "NODE_ENV=emu npx tsx scripts/waitEmu.ts",
     "e2e:emu": "NODE_ENV=emu cypress run --config-file cypress/cy.config.ts",
     "deploy": "npm run deploy --workspaces",
@@ -52,6 +52,7 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "express-rate-limit": "^7.3.1",
     "fast-check": "^3.19.0",
     "firebase-functions-test": "^3.1.0",
     "globals": "^15.6.0",
