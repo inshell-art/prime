@@ -1,27 +1,23 @@
-import waitOn from "wait-on";
-import { hostingPort } from "./getHostingPort";
-import "./loadEnv"; // Load environment variables
+import waitOn from 'wait-on';
+import { hostingPort } from './getHostingPort';
+import './loadEnv'; // Load environment variables
 
-const api = process.env.SERVER_API;
+const api = process.env.GET_PRIME_URL;
 const api_check = api ? `${api}/primes/2` : undefined;
 
-console.log("api_check:", api_check);
+const isStaging = process.env.NODE_ENV === 'staging';
 
-const port = hostingPort;
-const baseUrl = `http://127.0.0.1:${port}`;
-
-console.log("baseUrl in waitEmu:", baseUrl);
+const port = hostingPort; // get the port set in firebase.json
+const baseUrl = isStaging ? process.env.baseUrl : `http://127.0.0.1:${port}`;
 
 const resources = [api_check, baseUrl].filter(
-  (resource): resource is string => typeof resource === "string"
+  (resource): resource is string => typeof resource === 'string',
 );
-
-console.log("resources in waitEmu:", resources);
 
 waitOn({ resources })
   .then(() => {
-    console.log("Emulators client and server are ready");
+    console.log('Env is ready');
   })
-  .catch((error) => {
-    console.error("Error waiting for Emulators client and server:", error);
+  .catch(error => {
+    console.error('Error waiting for env:', error);
   });

@@ -41,3 +41,35 @@ jobs:
 
       - name: Deploy to Firebase for server
         run: npm run deploy:staging -w server
+
+  e2e-test:
+    runs-on: ubuntu-latest
+    needs: deploy
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    env:
+      NODE_ENV: staging
+      GET_PRIME_URL: ${{ secrets.GET_PRIME_URL_STAGING }}
+      baseUrl: 'https://prime-staging-0.web.app/'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: wait for Staging env to be ready
+        run: npm run wait:staging
+
+      - name: Run e2e tests on Staging
+        run: npm run e2e:staging
