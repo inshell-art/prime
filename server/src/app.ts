@@ -10,7 +10,7 @@ const app = express();
 
 const limiter = rateLimit({
   windowMs: isEmu ? 1 : 15 * 60 * 1000, // 15 minute
-  max: isEmu ? 10000 : 100, // 100 requests
+  max: isEmu ? 1000000000 : 100, // 100 requests
   message: 'Too many requests from this IP, please try again later.',
 });
 
