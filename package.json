@@ -12,10 +12,10 @@
   ],
   "scripts": {
     "test": "npm run test --workspaces",
-    "emu": "npm run build:emu -w server && npm run build:emu -w client  -- && firebase emulators:start --only functions,hosting",
-    "wait:emu": "NODE_ENV=emu npx tsx scripts/waitEmu.ts",
+    "emu": "npm run build -w server && npm run build:emu -w client  -- && firebase emulators:start --only functions,hosting",
+    "wait:emu": "NODE_ENV=emu npx tsx scripts/waitEnv.ts",
     "e2e:emu": "NODE_ENV=emu cypress run --config-file cypress/cy.config.ts",
-    "wait:staging": "NODE_ENV=staging npx tsx scripts/waitStaging.ts",
+    "wait:staging": "NODE_ENV=staging npx tsx scripts/waitEnv.ts",
     "e2e:staging": "NODE_ENV=staging cypress run --config-file cypress/cy.config.ts",
     "deploy": "npm run deploy --workspaces",
     "prepare": "husky",

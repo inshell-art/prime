@@ -10,6 +10,9 @@ const isStaging = process.env.NODE_ENV === 'staging';
 const port = hostingPort; // get the port set in firebase.json
 const baseUrl = isStaging ? process.env.baseUrl : `http://127.0.0.1:${port}`;
 
+console.log('api_check', api_check);
+console.log('baseUrl', baseUrl);
+
 const resources = [api_check, baseUrl].filter(
   (resource): resource is string => typeof resource === 'string',
 );
