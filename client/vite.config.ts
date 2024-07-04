@@ -19,6 +19,7 @@ export default defineConfig({
   },
   define: {
     __VITE_GET_PRIME: JSON.stringify(process.env.GET_PRIME_URL),
+    __API_KEY: JSON.stringify(process.env.API_KEY),
   },
   resolve: {
     alias: {

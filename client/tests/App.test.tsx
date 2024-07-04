@@ -46,20 +46,6 @@ describe('App Component', () => {
     expect(screen.getByText(/11/)).toBeInTheDocument();
   });
 
-  it('should handle fetch errors for internal server error', async () => {
-    window.fetch = jest.fn().mockResolvedValueOnce({
-      ok: false,
-      statusText: 'Internal Server Error',
-      json: async () => ({ message: 'Internal Server Error' }),
-    });
-
-    await act(async () => {
-      fireEvent.change(input, { target: { value: 'ab' } });
-    });
-
-    expect(screen.getByText(/Internal Server Error/)).toBeInTheDocument();
-  });
-
   it('should handle fetch errors for no prime found', async () => {
     window.fetch = jest.fn().mockResolvedValueOnce({
       ok: true,

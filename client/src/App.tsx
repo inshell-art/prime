@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './App.module.css';
 const api = __VITE_GET_PRIME;
-console.log('api:', api);
 
 const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
@@ -18,11 +17,17 @@ const App: React.FC = () => {
         return;
       }
 
+      if (digits > 100) {
+        setResponse('Digits parameter must be less than or equal to 100');
+        return;
+      }
+
       if (digits > 0) {
         try {
           const res = await fetch(`${api}/primes/${digits}`);
           if (!res.ok) {
-            setResponse(`Failed to fetch data. Error: ${res.statusText}`);
+            const errorData = await res.json();
+            setResponse(`Failed to fetch data. Error: ${errorData.error}`);
             return;
           }
           const data = await res.json();
