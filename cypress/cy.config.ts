@@ -9,6 +9,8 @@ const baseUrl_emu = `http://127.0.0.1:${port}`;
 
 const isStaging = process.env.NODE_ENV === 'staging';
 
+console.log('server_api', server_api);
+
 export default defineConfig({
   e2e: {
     baseUrl: isStaging ? process.env.baseUrl : baseUrl_emu,

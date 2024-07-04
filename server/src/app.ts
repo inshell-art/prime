@@ -4,17 +4,20 @@ import rateLimit from 'express-rate-limit';
 import { generatePrime } from './primeGenerator';
 import './loadEnv';
 
-const isEmu = process.env.NODE_ENV === 'emu';
+const isTest =
+  process.env.NODE_ENV === 'emu' || process.env.NODE_ENV === 'staging';
 
 const app = express();
 
-const limiter = rateLimit({
-  windowMs: isEmu ? 1 : 15 * 60 * 1000, // 15 minute
-  max: isEmu ? 1000000000 : 100, // 100 requests
-  message: 'Too many requests from this IP, please try again later.',
-});
+if (!isTest) {
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: 'Too many requests from this IP, please try again later',
+  });
 
-app.use(limiter);
+  app.use(limiter);
+}
 
 app.use(cors());
 

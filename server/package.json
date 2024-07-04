@@ -10,9 +10,10 @@
     "dev": "NODE_ENV=dev nodemon",
     "test": "jest",
     "clean-dist": "rimraf dist",
-    "build": "NODE_ENV=emu npm run clean-dist && tsc --project tsconfig.build.json && node prepare-package-json.js && node append-js-extension.js dist",
+    "build": "npm run clean-dist && tsc --project tsconfig.build.json && node prepare-package-json.js && node append-js-extension.js dist",
     "emu": "npm run build && firebase emulators:start --only functions",
     "deploy:staging": "npm run build && firebase use staging && firebase deploy --only functions --token $FIREBASE_TOKEN",
+    "deploy:staging:local": "npm run build && firebase use staging && firebase deploy --only functions",
     "deploy:prod": "npm run build && firebase use prod && firebase deploy --only functions",
     "type-check": "tsc --noEmit",
     "logs": "firebase functions:log"
