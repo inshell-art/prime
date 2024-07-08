@@ -1,7 +1,9 @@
 {
   "projects": {
     "dev": "prime-00000",
-    "staging": "prime-staging-0"
+    "staging": "prime-staging-0",
+    "prod": "prime-prod-0",
+    "emu": "prime-00000"
   },
   "targets": {},
   "etags": {},
