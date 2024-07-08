@@ -6,6 +6,8 @@ import '../scripts/loadEnv'; // Load environment variables for VITE_GET_PRIME
 
 const { __dirname } = getDirname(import.meta.url);
 
+console.log('__VITE_GET_PRIME', process.env.GET_PRIME_URL);
+
 export default defineConfig({
   plugins: [react()],
   build: {
@@ -19,7 +21,6 @@ export default defineConfig({
   },
   define: {
     __VITE_GET_PRIME: JSON.stringify(process.env.GET_PRIME_URL),
-    __API_KEY: JSON.stringify(process.env.API_KEY),
   },
   resolve: {
     alias: {

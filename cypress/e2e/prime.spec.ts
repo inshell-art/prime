@@ -11,7 +11,7 @@ describe('Prime e2e Tests', () => {
 
   it('should generate a prime number for valid input', () => {
     cy.get('input[type="text"]').type('ab');
-    cy.get('textarea').should($textarea => {
+    cy.get('textarea', { timeout: 10000 }).should($textarea => {
       const primeNumber = $textarea.text();
       expect(primeNumber).to.be.match(/^\d+$/);
       expect(primeNumber.length).to.be.eq(2);

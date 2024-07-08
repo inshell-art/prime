@@ -1,4 +1,4 @@
-name: Deploy to Firebase Staging and e2e test
+name: Deploy to staging - e2e test - prod - e2e test
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  staging:
     runs-on: ubuntu-latest
 
     strategy:
@@ -15,7 +15,10 @@ jobs:
         node-version: [18.x]
 
     env:
+      NODE_ENV: staging
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      GET_PRIME_URL: '${{ secrets.GET_PRIME_URL_STAGING }}'
+      BASE_URL: 'https://prime-staging-0.web.app'
 
     steps:
       - name: Checkout
@@ -34,26 +37,30 @@ jobs:
         run: npm install -g firebase-tools
 
       - name: Deploy to Firebase for client
-        env:
-          NODE_ENV: staging
-          GET_PRIME_URL: ${{ secrets.GET_PRIME_URL_STAGING }}
         run: npm run deploy:staging -w client
 
       - name: Deploy to Firebase for server
         run: npm run deploy:staging -w server
 
-  e2e-test:
+      - name: wait for Staging env to be ready
+        run: npm run wait:staging
+
+      - name: Run e2e tests on Staging
+        run: npm run e2e:staging
+
+  prod:
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: staging
 
     strategy:
       matrix:
         node-version: [18.x]
 
     env:
-      NODE_ENV: staging
-      GET_PRIME_URL: ${{ secrets.GET_PRIME_URL_STAGING }}
-      BASE_URL: 'https://prime-staging-0.web.app'
+      NODE_ENV: prod
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      GET_PRIME_URL: '${{ secrets.GET_PRIME_URL_PROD }}'
+      BASE_URL: 'https://prime-0.web.app'
 
     steps:
       - name: Checkout
@@ -68,8 +75,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: wait for Staging env to be ready
-        run: npm run wait:staging
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
 
-      - name: Run e2e tests on Staging
-        run: npm run e2e:staging
+      - name: Deploy to Firebase for client
+        run: npm run deploy:production -w client
+
+      - name: Deploy to Firebase for server
+        run: npm run deploy:production -w server
+
+      - name: wait for Production env to be ready
+        run: npm run wait:prod
+
+      - name: Run e2e tests on Production
+        run: npm run e2e:prod
