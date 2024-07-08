@@ -1,8 +1,6 @@
 import request from 'supertest';
 import app from '../src/app';
 
-jest.mock('../src/loadEnv');
-
 // Mock the primeGenerator module
 jest.mock('../src/primeGenerator', () => ({
   generatePrime: jest.fn(digits => {

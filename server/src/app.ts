@@ -2,14 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import { generatePrime } from './primeGenerator';
-import './loadEnv';
-
-const isTest =
-  process.env.NODE_ENV === 'emu' || process.env.NODE_ENV === 'staging';
 
 const app = express();
 
-if (!isTest) {
+const isProd = process.env.NODE_ENV === 'production';
+
+if (isProd) {
   const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,

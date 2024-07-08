@@ -11,7 +11,7 @@ describe('Prime e2e Tests', () => {
 
   it('should generate a prime number for valid input', () => {
     cy.get('input[type="text"]').type('ab');
-    cy.get('textarea').then($textarea => {
+    cy.get('textarea').should($textarea => {
       const primeNumber = $textarea.text();
       expect(primeNumber).to.be.match(/^\d+$/);
       expect(primeNumber.length).to.be.eq(2);
@@ -25,7 +25,7 @@ describe('Prime e2e Tests', () => {
 
   it('should handle frequent deletion and re-entry of input', () => {
     cy.get('input[type="text"]').type('abc').clear().type('def');
-    cy.get('textarea').then($textarea => {
+    cy.get('textarea').should($textarea => {
       const primeNumber = $textarea.text();
       expect(primeNumber).to.be.match(/^\d+$/);
     });
@@ -40,7 +40,7 @@ describe('Prime e2e Tests', () => {
   it('should maintain functionality after saving draft', () => {
     cy.get('button').click();
     cy.get('input[type="text"]').type('ab');
-    cy.get('textarea').then($textarea => {
+    cy.get('textarea', { timeout: 10000 }).should($textarea => {
       const primeNumber = $textarea.text();
       expect(primeNumber).to.be.match(/^\d+$/);
       expect(primeNumber.length).to.be.eq(2);

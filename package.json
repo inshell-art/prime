@@ -77,5 +77,8 @@
   },
   "overrides": {
     "protobufjs": "^7.3.0"
+  },
+  "dependencies": {
+    "firebase-tools": "^13.13.0"
   }
 }

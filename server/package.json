@@ -14,13 +14,15 @@
     "emu": "npm run build && firebase emulators:start --only functions",
     "deploy:staging": "npm run build && firebase use staging && firebase deploy --only functions --token $FIREBASE_TOKEN",
     "deploy:staging:local": "npm run build && firebase use staging && firebase deploy --only functions",
-    "deploy:prod": "npm run build && firebase use prod && firebase deploy --only functions",
+    "deploy:prod": "npm run build:prod && firebase use prod && firebase deploy --only functions",
+    "build:prod": "NODE_ENV=prod run clean-dist && tsc --project tsconfig.build.json && node prepare-package-json.js && node append-js-extension.js dist",
     "type-check": "tsc --noEmit",
     "logs": "firebase functions:log"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
     "firebase-admin": "^11.8.0",
     "firebase-functions": "^5.0.1"
   }
