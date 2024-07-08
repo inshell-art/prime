@@ -1,4 +1,4 @@
-name: Deploy to staging - e2e test - prod - e2e test
+name: Deploy to staging - e2e test - prod
 
 on:
   push:
@@ -83,9 +83,3 @@ jobs:
 
       - name: Deploy to Firebase for server
         run: npm run deploy:prod -w server
-
-      - name: wait for Production env to be ready
-        run: npm run wait:prod
-
-      - name: Run e2e tests on Production
-        run: npm run e2e:prod

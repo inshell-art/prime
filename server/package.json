@@ -14,7 +14,7 @@
     "emu": "firebase use emu && npm run build && firebase emulators:start --only functions",
     "deploy:staging": "firebase use staging && npm run build && firebase deploy --only functions --token $FIREBASE_TOKEN",
     "deploy:staging:local": "firebase use staging && npm run build && firebase deploy --only functions",
-    "deploy:prod": "firebase use prod && npm run build && firebase deploy --only functions",
+    "deploy:prod": "firebase use prod && npm run build && firebase deploy --only functions --token $FIREBASE_TOKEN",
     "type-check": "tsc --noEmit",
     "logs": "firebase functions:log"
   },

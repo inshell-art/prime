@@ -5,9 +5,11 @@ import { generatePrime } from './primeGenerator';
 
 const app = express();
 
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'prod';
 
 if (isProd) {
+  console.log('IN PROD!!!');
+
   const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
