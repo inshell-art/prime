@@ -60,7 +60,7 @@ jobs:
       NODE_ENV: prod
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       GET_PRIME_URL: '${{ secrets.GET_PRIME_URL_PROD }}'
-      BASE_URL: 'https://prime-0.web.app'
+      BASE_URL: 'https://prime-prod-0.web.app'
 
     steps:
       - name: Checkout
