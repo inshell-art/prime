@@ -84,15 +84,7 @@ jobs:
       - name: Deploy to Firebase for server
         run: npm run deploy:prod -w server
 
-  cleanup:
-    runs-on: ubuntu-latest
-    needs: prod
-
-    steps:
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
-
-      - name: Set Firebase project to staging
+      - name: Set Firebase project to staging for cleanup
         run: firebase use prime-staging-0 --token ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Disable hosting
