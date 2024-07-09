@@ -5,4 +5,4 @@ EMU_PID=$!
 npm run wait:emu
 npm run e2e:emu
 
-kill $EMU_PID
+./scripts/kill_all_descendants.sh $EMU_PID
