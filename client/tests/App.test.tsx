@@ -80,7 +80,7 @@ describe('App Component', () => {
     });
 
     expect(
-      screen.getByText(/Failed to fetch data. Error: Network Error/),
+      screen.getByText(/Failed to fetch data: Network Error/),
     ).toBeInTheDocument();
   });
 

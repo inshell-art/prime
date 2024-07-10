@@ -17,17 +17,12 @@ const App: React.FC = () => {
         return;
       }
 
-      if (digits > 100) {
-        setResponse('Digits parameter must be less than or equal to 100');
-        return;
-      }
-
       if (digits > 0) {
         try {
           const res = await fetch(`${api}/primes/${digits}`);
           if (!res.ok) {
-            const errorData = await res.json();
-            setResponse(`Failed to fetch data. Error: ${errorData.error}`);
+            const errorData = await res.text();
+            setResponse(`🚫 Failed to fetch data: ${errorData}`);
             return;
           }
           const data = await res.json();
@@ -35,7 +30,7 @@ const App: React.FC = () => {
           setResponse(newPrime);
         } catch (error) {
           if (error instanceof Error) {
-            setResponse(`Failed to fetch data. Error: ${error.message}`);
+            setResponse(`🚫 Failed to fetch data: ${error.message}`);
           }
         }
       }

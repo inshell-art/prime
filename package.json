@@ -18,7 +18,7 @@
     "wait:staging": "NODE_ENV=staging npx tsx scripts/waitEnv.ts",
     "e2e:staging": "NODE_ENV=staging cypress run --config-file cypress/cy.config.ts",
     "wait:prod": "NODE_ENV=prod npx tsx scripts/waitEnv.ts",
-    "e2e:prod": "NODE_ENV=prod cypress run --config-file cypress/cy.config.ts",
+    "smoke:prod": "NODE_ENV=prod cypress run --config-file cypress/cy.config.smoke.ts",
     "prepare": "husky",
     "lint": "eslint .",
     "prettier": "prettier --write \"client/**/*\" \"server/**/*\" ",

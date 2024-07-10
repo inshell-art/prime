@@ -84,6 +84,12 @@ jobs:
       - name: Deploy to Firebase for server
         run: npm run deploy:prod -w server
 
+      - name: wait for Prod env to be ready
+        run: npm run wait:prod
+
+      - name: Run smoke tests on Prod
+        run: npm run smoke:prod
+
       - name: Set Firebase project to staging for cleanup
         run: firebase use prime-staging-0 --token ${{ secrets.FIREBASE_TOKEN }}
 

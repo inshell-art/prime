@@ -28,9 +28,7 @@ app.get('/primes/:digits', async (req, res) => {
   }
 
   if (digits > 100) {
-    return res
-      .status(400)
-      .json({ error: 'Digits parameter must be less than or equal to 100' });
+    return res.status(400).send('Input digits must <= 100');
   }
 
   try {
