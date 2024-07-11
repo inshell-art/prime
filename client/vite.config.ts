@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { getDirname } from '../utils/utils';
-import '../scripts/loadEnv'; // Load environment variables for VITE_GET_PRIME
+import '../scripts/loadEnv';
 
 const { __dirname } = getDirname(import.meta.url);
 
