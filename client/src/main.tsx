@@ -9,10 +9,10 @@ const env = process.env.NODE_ENV;
 
 if (env === 'prod') {
   const firebaseConfig = {
-    apiKey: process.env.VITE_APP_FIREBASE_API_KEY,
-    projectId: process.env.VITE_APP_FIREBASE_PROJECT_ID,
-    appId: process.env.VITE_APP_FIREBASE_APP_ID,
-    measurementId: process.env.VITE_APP_FIREBASE_MEASUREMENT_ID,
+    apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
+    projectId: import.meta.env.VITE_APP_FIREBASE_PROJECT_ID,
+    appId: import.meta.env.VITE_APP_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_APP_FIREBASE_MEASUREMENT_ID,
   };
 
   const app = initializeApp(firebaseConfig);
