@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './App.module.css';
+import { isDesktopDevice } from './device';
+
 const api = __VITE_GET_PRIME;
 
 const App: React.FC = () => {
@@ -7,6 +9,11 @@ const App: React.FC = () => {
   const [response, setResponse] = useState<string>('');
   const [lastInputLength, setLastInputLength] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsDesktop(isDesktopDevice());
+  }, []);
 
   useEffect(() => {
     const fetchPrime = async () => {
@@ -79,30 +86,38 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.inputContainer}>
-        <textarea
-          className={styles.textarea}
-          value={response}
-          readOnly
-          rows={10}
-        />
-        <div className={styles.inputRow}>
-          <input
-            className={styles.input}
-            ref={inputRef}
-            type='text'
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder=''
-          />
-          <button className={styles.button} onClick={saveDraft}>
-            Save
-          </button>
+    <>
+      {isDesktop ? (
+        <div className={styles.container}>
+          <div className={styles.inputContainer}>
+            <textarea
+              className={styles.textarea}
+              value={response}
+              readOnly
+              rows={10}
+            />
+            <div className={styles.inputRow}>
+              <input
+                className={styles.input}
+                ref={inputRef}
+                type='text'
+                value={inputValue}
+                onChange={handleInputChange}
+                placeholder=''
+              />
+              <button className={styles.button} onClick={saveDraft}>
+                Save
+              </button>
+            </div>
+            <div className={styles.titlePrime}>Prime</div>
+          </div>
         </div>
-        <div className={styles.titlePrime}>Prime</div>
-      </div>
-    </div>
+      ) : (
+        <div className={styles.mobileMessage}>
+          This app is only available on desktop devices.
+        </div>
+      )}
+    </>
   );
 };
 
