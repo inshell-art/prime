@@ -35,3 +35,10 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('setUserAgent', userAgent => {
+  Object.defineProperty(navigator, 'userAgent', {
+    value: userAgent,
+    writable: true,
+  });
+});
