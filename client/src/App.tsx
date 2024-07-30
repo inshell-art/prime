@@ -47,6 +47,14 @@ const App: React.FC = () => {
 
   // Focus the input field on any case
   useEffect(() => {
+    const focusInput = () => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    };
+
+    setTimeout(focusInput, 0);
+
     const handleDocumentClick = () => {
       if (inputRef.current) {
         inputRef.current.focus();
